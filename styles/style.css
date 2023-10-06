@@ -1,0 +1,118 @@
+.page {}
+
+.wrapper {
+  max-inline-size: 1024px;
+  min-inline-size: 375px;
+  margin: 0 auto;
+  background: inherit;
+}
+
+.header {
+  padding: 20px;
+  background: url(../images/cover-image-dark.png);
+  background-size: cover;
+}
+
+.header__main-holder {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.header__main-holder::before, .header__main-holder::after {
+  content: '';
+  position: absolute;
+  inline-size: 25px;
+  block-size: 25px;
+  border-style: solid;
+  border-color: var(--color-accent);
+}
+
+.header__main-holder::before {
+  top: 0;
+  right: 0;
+  border-width: 1px 1px 0 0;
+}
+
+.header__main-holder::after {
+  bottom: 0;
+  left: 0;
+  border-width: 0 0 1px 1px;
+}
+
+.header__rec {
+  position: absolute;
+  top: 0;
+  right: 8px;
+  color: var(--color-accent);
+  text-transform: uppercase;
+}
+
+.header__rec::after {
+  content: '';
+  display: inline-block;
+  inline-size: 9px;
+  block-size: 9px;
+  margin-left: 10px;
+  margin-bottom: 2px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 4px var(--color-accent),
+              0 0 5px var(--color-accent),
+              0 0 6px var(--color-accent);
+}
+
+.header__theme-menu {
+  color: var(--color-accent);
+}
+
+.header__theme-menu-list {
+  display: flex;
+  justify-content: center;
+}
+
+.header__theme-menu-button {
+  padding-inline: 15px;
+  padding-bottom: 5px;
+  background: transparent;
+  text-align: center;
+  font-size: 18px;
+  line-height: 18px;
+  text-transform: lowercase;
+}
+
+.header__theme-menu-button_type_auto {
+  margin-inline: 5px;
+}
+
+.header__title {
+  position: relative;
+  left: -20px;
+  inline-size: calc(100% + 40px);
+  margin-block-start: 275px;
+  margin-block-end: 112px;
+  color: var(--color-title-main);
+  text-shadow: 4px 4px 0 var(--color-accent);
+  font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  text-transform: lowercase;
+  line-height: 82.5%;
+}
+
+.header__theme-menu, .header__title {
+  grid-column: span 2;
+}
+
+.header__theme-menu-button_active {
+  border: 1px solid var(--color-accent);
+}
+
+.header__intro {
+  margin-block-end: 116px;
+  grid-column: 2 / span 2;
+  background-color: var(--color-accent);
+  color: var(--color-intro);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 130%;
+}

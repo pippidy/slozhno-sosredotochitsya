@@ -42,7 +42,7 @@
 
 .header__rec {
   position: absolute;
-  top: 0;
+  top: 1px;
   right: 8px;
   color: var(--color-accent);
   text-transform: uppercase;
@@ -79,6 +79,7 @@
   font-size: 18px;
   line-height: 18px;
   text-transform: lowercase;
+  border: 1px solid transparent;
 }
 
 .header__theme-menu-button_type_auto {
@@ -109,10 +110,73 @@
 .header__intro {
   margin-block-end: 116px;
   grid-column: 2 / span 2;
-  background-color: var(--color-accent);
+  background: var(--color-accent);
   color: var(--color-intro);
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
   line-height: 130%;
 }
+
+/****************** M-SIZE STYLES start ******************/
+
+@media (max-width: 768px) {
+
+.header__theme-menu {
+  justify-self: end;
+  margin-top: 171px;
+}
+
+.header__theme-menu-list {
+  flex-direction: column;
+  gap: 8px;
+  align-items: end;
+}
+
+.header__theme-menu-button_type_auto {
+  margin-inline: 0;
+}
+
+.header__theme-menu-button {
+  padding-inline: 12px;
+}
+
+.header__title {
+  margin-block-start: 173px;
+  margin-block-end: 161px;
+}
+
+}
+
+/****************** M-SIZE STYLES end ******************/
+
+/****************** S-SIZE STYLES start ******************/
+
+@media (max-width: 375px) {
+
+.header {
+  padding: 10px;
+}
+
+.header__theme-menu {
+  margin-top: 65px;
+}
+
+.header__theme-menu-list {
+  gap: 8px;
+}
+
+.header__title {
+  padding-inline: 15px;
+  margin-block-start: 65px;
+  margin-block-end: 51px;
+}
+
+.header__intro {
+  grid-column: 1 / -1;
+  margin-block-end: 56px;
+}
+
+}
+
+/****************** S-SIZE STYLES end ******************/

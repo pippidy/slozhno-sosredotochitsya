@@ -4,8 +4,10 @@
   max-inline-size: 1024px;
   min-inline-size: 375px;
   margin: 0 auto;
-  background: inherit;
+  background: #000028;
 }
+
+/****************** HEADER start ******************/
 
 .header {
   padding: 20px;
@@ -13,13 +15,13 @@
   background-size: cover;
 }
 
-.header__main-holder {
+.decorated-zone {
   position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
 
-.header__main-holder::before, .header__main-holder::after {
+.decorated-zone::before, .decorated-zone::after {
   content: '';
   position: absolute;
   inline-size: 25px;
@@ -28,13 +30,13 @@
   border-color: var(--color-accent);
 }
 
-.header__main-holder::before {
+.decorated-zone::before {
   top: 0;
   right: 0;
   border-width: 1px 1px 0 0;
 }
 
-.header__main-holder::after {
+.decorated-zone::after {
   bottom: 0;
   left: 0;
   border-width: 0 0 1px 1px;
@@ -118,6 +120,95 @@
   line-height: 130%;
 }
 
+/****************** HEADER end ******************/
+
+/****************** SECTIONS start ******************/
+
+.section {
+  padding: 40px 20px;
+}
+
+.header + .section {
+  padding-block-start: 60px;
+}
+
+h2.section__title, h3.section__title, h4.section__title {
+  font-size: var(--font-size-main);
+}
+
+h2.section__title {
+  color: var(--color-accent);
+}
+
+h3.section__title, h4.section__title {
+  background: var(--color-accent);
+  color: #000028;
+}
+
+h3.section__title + h4.section__title {
+  margin-top: 20px;
+}
+
+h3.section__title {
+  margin-block-end: 10px;
+}
+
+h4.section__title {
+  margin-block-end: 11px;
+}
+
+h4.section__title {
+  font-weight: 400;
+}
+
+.section__article p {
+  color: #F1B2CE;
+  font-weight: 400;
+  line-height: 130%;
+}
+
+.section-column {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px 10px;
+}
+
+.section-column h2.section__title {
+  grid-row: 1 / -1;
+}
+
+.section-column .section__article {
+  grid-column: 2 / -1;
+}
+
+.section-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.section-row h2.section__title {
+  grid-column: 1 / -1;
+  inline-size: calc(100% / 3);
+}
+
+.section__link {
+  position: relative;
+  text-shadow: 1px 2px 0 var(--color-accent);
+}
+
+.section__link:hover::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 1px;
+  block-size: 1px;
+  background: #F1B2CE;
+}
+
+/****************** SECTIONS end ******************/
+
 /****************** M-SIZE STYLES start ******************/
 
 @media (max-width: 768px) {
@@ -129,7 +220,7 @@
 
 .header__theme-menu-list {
   flex-direction: column;
-  gap: 8px;
+  gap: 9px;
   align-items: end;
 }
 
@@ -142,8 +233,28 @@
 }
 
 .header__title {
-  margin-block-start: 173px;
+  margin-block-start: 175px;
   margin-block-end: 161px;
+}
+
+.header__intro {
+  margin-block-end: 163px;
+}
+
+.section-column {
+  gap: 20px;
+}
+
+.section-row {
+  display: block;
+}
+
+.section-row h2.section__title {
+  inline-size: calc(100% / 5);
+}
+
+.section-row .section__article {
+  margin-block-start: 20px;
 }
 
 }
@@ -163,18 +274,38 @@
 }
 
 .header__theme-menu-list {
-  gap: 8px;
+  gap: 9px;
 }
 
 .header__title {
   padding-inline: 15px;
-  margin-block-start: 65px;
+  margin-block-start: 63px;
   margin-block-end: 51px;
 }
 
 .header__intro {
   grid-column: 1 / -1;
   margin-block-end: 56px;
+}
+
+.header + .section {
+  padding-block-start: 40px;
+}
+
+.section {
+  padding: 26px 10px;
+}
+
+.section-column {
+  display: block;
+}
+
+.section-row h2.section__title {
+  inline-size: auto;
+}
+
+.section__article {
+  margin-block-start: 20px;
 }
 
 }

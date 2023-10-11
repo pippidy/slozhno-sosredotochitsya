@@ -1,10 +1,21 @@
-.page {}
-
 .wrapper {
   max-inline-size: 1024px;
   min-inline-size: 375px;
   margin: 0 auto;
   background: #000028;
+  overflow: hidden;
+}
+
+.header, .footer {
+  padding: 20px;
+}
+
+.header__title, .footer__title {
+  color: var(--color-title-main);
+  text-shadow: 4px 4px 0 var(--color-accent);
+  font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  font-weight: 700;
+  text-transform: lowercase;
 }
 
 /****************** HEADER start ******************/
@@ -15,31 +26,9 @@
   background-size: cover;
 }
 
-.decorated-zone {
-  position: relative;
+.header__main-holder {
   display: grid;
   grid-template-columns: 1fr 1fr;
-}
-
-.decorated-zone::before, .decorated-zone::after {
-  content: '';
-  position: absolute;
-  inline-size: 25px;
-  block-size: 25px;
-  border-style: solid;
-  border-color: var(--color-accent);
-}
-
-.decorated-zone::before {
-  top: 0;
-  right: 0;
-  border-width: 1px 1px 0 0;
-}
-
-.decorated-zone::after {
-  bottom: 0;
-  left: 0;
-  border-width: 0 0 1px 1px;
 }
 
 .header__rec {
@@ -94,10 +83,6 @@
   inline-size: calc(100% + 40px);
   margin-block-start: 275px;
   margin-block-end: 112px;
-  color: var(--color-title-main);
-  text-shadow: 4px 4px 0 var(--color-accent);
-  font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
-  text-transform: lowercase;
   line-height: 82.5%;
 }
 
@@ -126,6 +111,10 @@
 
 .section {
   padding: 40px 20px;
+}
+
+.section:first-child {
+  padding-block-start: 60px
 }
 
 .header + .section {
@@ -209,6 +198,90 @@ h4.section__title {
 
 /****************** SECTIONS end ******************/
 
+/****************** CARDS start ******************/
+
+.cards__holder {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: clamp(192px, auto, 260px) 1fr clamp(318px, auto, 428px);
+  grid-auto-flow: dense;
+  gap: 20px;
+}
+
+.cards__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cards__img:nth-child(1) {
+  grid-column: 1 / span 2;
+}
+
+.cards__img:nth-child(2) {
+  grid-column: 3 / 4;
+  grid-row: 1 / span 2;
+}
+
+.cards__img:nth-child(3) {
+  grid-row: 2 / span 2;
+}
+
+.cards__img:nth-child(5) {
+  grid-column: 2 / span 2;
+  grid-row: 3 / 4;
+}
+
+.cards h2.section__title {
+  color: #000028;
+  background: var(--color-accent);
+  margin-bottom: 20px;
+}
+
+/****************** CARDS end ******************/
+
+/****************** FOOTER start ******************/
+
+.footer {
+  padding-block: 40px;
+}
+
+.footer__title {
+  padding-block: 260px;
+  text-align: center;
+}
+
+/****************** FOOTER end ******************/
+
+/****************** DECORATED-ZONE start ******************/
+
+.decorated-zone {
+  position: relative;
+}
+
+.decorated-zone::before, .decorated-zone::after {
+  content: '';
+  position: absolute;
+  inline-size: 25px;
+  block-size: 25px;
+  border-style: solid;
+  border-color: var(--color-accent);
+}
+
+.decorated-zone::before {
+  top: 0;
+  right: 0;
+  border-width: 1px 1px 0 0;
+}
+
+.decorated-zone::after {
+  bottom: 0;
+  left: 0;
+  border-width: 0 0 1px 1px;
+}
+
+/****************** DECORATED-ZONE end ******************/
+
 /****************** M-SIZE STYLES start ******************/
 
 @media (max-width: 768px) {
@@ -257,6 +330,10 @@ h4.section__title {
   margin-block-start: 20px;
 }
 
+.footer__title {
+  padding-block: 415px;
+}
+
 }
 
 /****************** M-SIZE STYLES end ******************/
@@ -296,6 +373,10 @@ h4.section__title {
   padding: 26px 10px;
 }
 
+.section:first-child {
+  padding-block-start: 40px;
+}
+
 .section-column {
   display: block;
 }
@@ -306,6 +387,30 @@ h4.section__title {
 
 .section__article {
   margin-block-start: 20px;
+}
+
+.cards__holder {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cards h2.section__title {
+  margin-block-end: 10px;
+}
+
+.cards {
+  padding-block-start: 22px;
+}
+
+.footer {
+  padding: 10px;
+  padding-block-start: 25px;
+}
+
+.footer__title {
+  padding-block-start: 250px;
+  padding-block-end: 242px;
 }
 
 }

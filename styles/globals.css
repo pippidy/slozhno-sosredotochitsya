@@ -42,4 +42,5 @@ a {
   line-height: inherit;
   border: 0;
   text-decoration: none;
+  cursor: pointer;
 }

@@ -1,12 +1,15 @@
-/*
-  Специально для светлой темы при наличии класса.
-  Здесь окажутся стили, которые нужно переопределить принудительно,
-  переключая тему
-*/
-
 .page.theme_light {
-  /* сохраните этот селектор в приведённом виде.
-    Так стили написанные ниже будут иметь больший вес,
-    чем стили в медиазапросе предпочтений пользователя
-  */
+  --clr-accent: #ff8dcb;
+  --clr-accent-dark: #353430;
+  --clr-title-main: #FFC2E6;
+  --clr-title-section: var(--clr-accent-dark);
+  --clr-article: var(--clr-accent-dark);
+  --clr-decor: var(--clr-accent-dark);
+
+  --bg-main: #fff1f7;
+  --bg-header: url(../images/cover-image-light.png);
+}
+
+.page.theme_light .header__rec {
+  display: none;
 }

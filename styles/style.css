@@ -2,7 +2,7 @@
   max-inline-size: 1024px;
   min-inline-size: 375px;
   margin: 0 auto;
-  background: #000028;
+  background: var(--bg-main);
   overflow: hidden;
 }
 
@@ -11,8 +11,8 @@
 }
 
 .header__title, .footer__title {
-  color: var(--color-title-main);
-  text-shadow: 4px 4px 0 var(--color-accent);
+  color: var(--clr-title-main);
+  text-shadow: 4px 4px 0 var(--clr-accent);
   font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
   font-weight: 700;
   text-transform: lowercase;
@@ -22,7 +22,7 @@
 
 .header {
   padding: 20px;
-  background: url(../images/cover-image-dark.png);
+  background: var(--bg-header);
   background-size: cover;
 }
 
@@ -35,7 +35,7 @@
   position: absolute;
   top: 1px;
   right: 8px;
-  color: var(--color-accent);
+  color: var(--clr-accent);
   text-transform: uppercase;
 }
 
@@ -47,14 +47,14 @@
   margin-left: 10px;
   margin-bottom: 2px;
   border-radius: 50%;
-  background: var(--color-accent);
-  box-shadow: 0 0 4px var(--color-accent),
-              0 0 5px var(--color-accent),
-              0 0 6px var(--color-accent);
+  background: var(--clr-accent);
+  box-shadow: 0 0 4px var(--clr-accent),
+              0 0 5px var(--clr-accent),
+              0 0 6px var(--clr-accent);
 }
 
 .header__theme-menu {
-  color: var(--color-accent);
+  color: var(--clr-decor);
 }
 
 .header__theme-menu-list {
@@ -91,14 +91,14 @@
 }
 
 .header__theme-menu-button_active {
-  border: 1px solid var(--color-accent);
+  border: 1px solid var(--clr-decor);
 }
 
 .header__intro {
   margin-block-end: 116px;
   grid-column: 2 / span 2;
-  background: var(--color-accent);
-  color: var(--color-intro);
+  background: var(--clr-accent);
+  color: var(--clr-accent-dark);
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
@@ -126,12 +126,12 @@ h2.section__title, h3.section__title, h4.section__title {
 }
 
 h2.section__title {
-  color: var(--color-accent);
+  color: var(--clr-title-section);
 }
 
 h3.section__title, h4.section__title {
-  background: var(--color-accent);
-  color: #000028;
+  background: var(--clr-accent);
+  color: var(--clr-accent-dark);
 }
 
 h3.section__title + h4.section__title {
@@ -151,7 +151,7 @@ h4.section__title {
 }
 
 .section__article p {
-  color: #F1B2CE;
+  color: var(--clr-article);
   font-weight: 400;
   line-height: 130%;
 }
@@ -183,7 +183,7 @@ h4.section__title {
 
 .section__link {
   position: relative;
-  text-shadow: 1px 2px 0 var(--color-accent);
+  text-shadow: 1px 2px 0 var(--clr-accent);
 }
 
 .section__link:hover::after {
@@ -193,7 +193,7 @@ h4.section__title {
   bottom: 0;
   left: 1px;
   block-size: 1px;
-  background: #F1B2CE;
+  background: var(--clr-article);
 }
 
 /****************** SECTIONS end ******************/
@@ -233,8 +233,8 @@ h4.section__title {
 }
 
 .cards h2.section__title {
-  color: #000028;
-  background: var(--color-accent);
+  color: var(--clr-accent-dark);
+  background: var(--clr-accent);
   margin-bottom: 20px;
 }
 
@@ -265,7 +265,7 @@ h4.section__title {
   inline-size: 25px;
   block-size: 25px;
   border-style: solid;
-  border-color: var(--color-accent);
+  border-color: var(--clr-decor);
 }
 
 .decorated-zone::before {

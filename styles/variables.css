@@ -1,7 +1,14 @@
 :root {
   --font-family-main: IBM Plex Mono, serif;
   --font-size-main: 18px;
-  --color-title-main: #DB00FF;
-  --color-intro: #000028;
-  --color-accent: #ff0070;
+
+  --clr-accent: #ff0070;
+  --clr-accent-dark: #000028;
+  --clr-title-main: #DB00FF;
+  --clr-title-section: var(--clr-accent);
+  --clr-article: #F1B2CE;
+  --clr-decor: var(--clr-accent);
+
+  --bg-header: url(../images/cover-image-dark.png);
+  --bg-main: var(--clr-accent-dark);
 }

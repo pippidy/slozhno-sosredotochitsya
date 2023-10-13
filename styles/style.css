@@ -1,8 +1,11 @@
+.page {
+  background: var(--bg-main);
+}
+
 .wrapper {
   max-inline-size: 1024px;
   min-inline-size: 375px;
   margin: 0 auto;
-  background: var(--bg-main);
   overflow: hidden;
 }
 
@@ -33,8 +36,8 @@
 
 .header__rec {
   position: absolute;
-  top: 1px;
-  right: 8px;
+  inset-block-start: 1px;
+  inset-inline-end: 8px;
   color: var(--clr-accent);
   text-transform: uppercase;
 }
@@ -44,8 +47,8 @@
   display: inline-block;
   inline-size: 9px;
   block-size: 9px;
-  margin-left: 10px;
-  margin-bottom: 2px;
+  margin-inline-start: 10px;
+  margin-block-end: 2px;
   border-radius: 50%;
   background: var(--clr-accent);
   box-shadow: 0 0 4px var(--clr-accent),
@@ -64,7 +67,7 @@
 
 .header__theme-menu-button {
   padding-inline: 15px;
-  padding-bottom: 5px;
+  padding-block-end: 5px;
   background: transparent;
   text-align: center;
   font-size: 18px;
@@ -73,13 +76,25 @@
   border: 1px solid transparent;
 }
 
+.header__theme-menu-button:hover {
+  outline: 1px solid #ff007040;
+}
+
+.header__theme-menu-button:focus {
+  outline: 0;
+}
+
+.header__theme-menu-button:focus-visible {
+  border-block-end: 1px solid var(--clr-decor);
+}
+
 .header__theme-menu-button_type_auto {
   margin-inline: 5px;
 }
 
 .header__title {
   position: relative;
-  left: -20px;
+  inset-inline-start: -20px;
   inline-size: calc(100% + 40px);
   margin-block-start: 275px;
   margin-block-end: 112px;
@@ -135,7 +150,7 @@ h3.section__title, h4.section__title {
 }
 
 h3.section__title + h4.section__title {
-  margin-top: 20px;
+  margin-block-start: 20px;
 }
 
 h3.section__title {
@@ -189,11 +204,25 @@ h4.section__title {
 .section__link:hover::after {
   content: '';
   position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 1px;
+  inset-inline-end: 0;
+  inset-block-end: 0;
+  inset-inline-start: 1px;
   block-size: 1px;
   background: var(--clr-article);
+}
+
+.section__link:focus {
+  outline: 0;
+}
+
+.section__link:focus-visible::before {
+  content: '';
+  block-size: 95%;
+  position: absolute;
+  inset-block-start: 2.5px;
+  inset-inline-start: -2px;
+  inset-inline-end: -3px;
+  border: 1px solid var(--clr-article);
 }
 
 /****************** SECTIONS end ******************/
@@ -209,8 +238,8 @@ h4.section__title {
 }
 
 .cards__img {
-  width: 100%;
-  height: 100%;
+  inline-size: 100%;
+  block-size: 100%;
   object-fit: cover;
 }
 
@@ -235,7 +264,7 @@ h4.section__title {
 .cards h2.section__title {
   color: var(--clr-accent-dark);
   background: var(--clr-accent);
-  margin-bottom: 20px;
+  margin-block-end: 20px;
 }
 
 /****************** CARDS end ******************/
@@ -269,14 +298,14 @@ h4.section__title {
 }
 
 .decorated-zone::before {
-  top: 0;
-  right: 0;
+  inset-block-start: 0;
+  inset-inline-end: 0;
   border-width: 1px 1px 0 0;
 }
 
 .decorated-zone::after {
-  bottom: 0;
-  left: 0;
+  inset-block-end: 0;
+  inset-inline-start: 0;
   border-width: 0 0 1px 1px;
 }
 
@@ -288,7 +317,7 @@ h4.section__title {
 
 .header__theme-menu {
   justify-self: end;
-  margin-top: 171px;
+  margin-block-start: 171px;
 }
 
 .header__theme-menu-list {
@@ -347,7 +376,7 @@ h4.section__title {
 }
 
 .header__theme-menu {
-  margin-top: 65px;
+  margin-block-start: 65px;
 }
 
 .header__theme-menu-list {

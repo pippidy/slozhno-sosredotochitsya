@@ -13,3 +13,7 @@
 .page.theme_light .header__rec {
   display: none;
 }
+
+.header__theme-menu-button:hover {
+  outline: 1px solid #35343040;
+}

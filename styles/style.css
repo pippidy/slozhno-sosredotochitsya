@@ -1,49 +1,62 @@
 .page {
-  background: var(--bg-main);
-}
-
-.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-block-size: 100vh;
+  inline-size: 100vw;
   max-inline-size: 1024px;
   min-inline-size: 375px;
   margin: 0 auto;
-  overflow: hidden;
+  background: var(--bg-main);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
-.header, .footer {
+.header,
+.footer {
+  display: grid;
+  min-block-size: 768px;
   padding: 20px;
 }
 
-.header__title, .footer__title {
+.header__title,
+.footer__title {
   color: var(--clr-title-main);
-  text-shadow: 4px 4px 0 var(--clr-accent);
-  font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  font-size: var(--font-size-title);
   font-weight: 700;
   text-transform: lowercase;
+}
+
+.title-decor {
+  background: var(--clr-accent);
+  color: var(--clr-accent-dark);
+  font-weight: 700;
 }
 
 /****************** HEADER start ******************/
 
 .header {
-  padding: 20px;
-  background: var(--bg-header);
-  background-size: cover;
+  flex: 1;
+  grid-template-columns: 1fr 1fr max-content;
+  grid-template-rows: min-content 400px auto;
 }
 
-.header__main-holder {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.header__title {
+  text-shadow: 4px 4px 0 var(--clr-accent);
 }
 
 .header__rec {
-  position: absolute;
-  inset-block-start: 1px;
-  inset-inline-end: 8px;
+  grid-column: 1 / -1;
+  grid-row: 1 / 2;
+  justify-self: end;
+  position: relative;
+  inset-inline-end: 10px;
   color: var(--clr-accent);
   text-transform: uppercase;
 }
 
 .header__rec::after {
-  content: '';
+  content: "";
   display: inline-block;
   inline-size: 9px;
   block-size: 9px;
@@ -51,12 +64,13 @@
   margin-block-end: 2px;
   border-radius: 50%;
   background: var(--clr-accent);
-  box-shadow: 0 0 4px var(--clr-accent),
-              0 0 5px var(--clr-accent),
-              0 0 6px var(--clr-accent);
+  filter: drop-shadow(0px 0px 4px var(--clr-accent));
 }
 
 .header__theme-menu {
+  position: relative;
+  grid-column: 1 / -1;
+  grid-row: 1 / 2;
   color: var(--clr-decor);
 }
 
@@ -76,10 +90,6 @@
   border: 1px solid transparent;
 }
 
-.header__theme-menu-button:hover {
-  outline: 1px solid #ff007040;
-}
-
 .header__theme-menu-button:focus {
   outline: 0;
 }
@@ -93,30 +103,22 @@
 }
 
 .header__title {
+  grid-column: 1 / -1;
+  align-self: end;
   position: relative;
   inset-inline-start: -20px;
-  inline-size: calc(100% + 40px);
-  margin-block-start: 275px;
-  margin-block-end: 112px;
   line-height: 82.5%;
-}
-
-.header__theme-menu, .header__title {
-  grid-column: span 2;
 }
 
 .header__theme-menu-button_active {
   border: 1px solid var(--clr-decor);
+  pointer-events: none;
 }
 
 .header__intro {
-  margin-block-end: 116px;
   grid-column: 2 / span 2;
-  background: var(--clr-accent);
-  color: var(--clr-accent-dark);
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 700;
+  justify-self: end;
+  align-self: center;
   line-height: 130%;
 }
 
@@ -129,80 +131,87 @@
 }
 
 .section:first-child {
-  padding-block-start: 60px
+  padding-block-start: 60px;
+}
+
+.section:last-child {
+  padding-block-end: 60px;
 }
 
 .header + .section {
   padding-block-start: 60px;
 }
 
-h2.section__title, h3.section__title, h4.section__title {
-  font-size: var(--font-size-main);
-}
-
-h2.section__title {
-  color: var(--clr-title-section);
-}
-
-h3.section__title, h4.section__title {
-  background: var(--clr-accent);
-  color: var(--clr-accent-dark);
-}
-
-h3.section__title + h4.section__title {
-  margin-block-start: 20px;
-}
-
-h3.section__title {
-  margin-block-end: 10px;
-}
-
-h4.section__title {
-  margin-block-end: 11px;
-}
-
-h4.section__title {
-  font-weight: 400;
-}
-
-.section__article p {
+.section p {
   color: var(--clr-article);
   font-weight: 400;
   line-height: 130%;
 }
 
-.section-column {
+.section__article-title {
+  color: var(--clr-title-section);
+}
+
+.section__aricle-block-title + .section__article-separator {
+  margin-block-start: 20px;
+}
+
+.section__aricle-block-title {
+  margin-block-end: 10px;
+}
+
+.section__article-separator {
+  margin-block-end: 11px;
+}
+
+.section__article-separator {
+  font-weight: 400;
+}
+
+.section-column p {
+  margin-block: 10px 20px;
+}
+
+.section-column__article {
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 20px 10px;
 }
 
-.section-column h2.section__title {
+.section-column__article p:last-child {
+  margin-block-end: 0;
+}
+
+.section__article-title_column {
   grid-row: 1 / -1;
 }
 
-.section-column .section__article {
+.section-column__article-block {
   grid-column: 2 / -1;
 }
 
-.section-row {
+.section-row p {
+  margin-block: 10px 0;
+}
+
+.section-row__article {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 
-.section-row h2.section__title {
+.section__article-title_row {
   grid-column: 1 / -1;
   inline-size: calc(100% / 3);
 }
 
 .section__link {
   position: relative;
-  text-shadow: 1px 2px 0 var(--clr-accent);
+  text-shadow: 2px 2px 0 var(--clr-accent);
 }
 
 .section__link:hover::after {
-  content: '';
+  content: "";
   position: absolute;
   inset-inline-end: 0;
   inset-block-end: 0;
@@ -216,7 +225,7 @@ h4.section__title {
 }
 
 .section__link:focus-visible::before {
-  content: '';
+  content: "";
   block-size: 95%;
   position: absolute;
   inset-block-start: 2.5px;
@@ -232,9 +241,11 @@ h4.section__title {
 .cards__holder {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: clamp(192px, auto, 260px) 1fr clamp(318px, auto, 428px);
-  grid-auto-flow: dense;
   gap: 20px;
+}
+
+.cards__title {
+  margin-block-end: 20px;
 }
 
 .cards__img {
@@ -272,12 +283,14 @@ h4.section__title {
 /****************** FOOTER start ******************/
 
 .footer {
-  padding-block: 40px;
+  flex-shrink: 0;
+  block-size: 100%;
 }
 
 .footer__title {
-  padding-block: 260px;
+  align-self: center;
   text-align: center;
+  text-shadow: 2px 2px 0 var(--clr-accent);
 }
 
 /****************** FOOTER end ******************/
@@ -288,8 +301,9 @@ h4.section__title {
   position: relative;
 }
 
-.decorated-zone::before, .decorated-zone::after {
-  content: '';
+.decorated-zone::before,
+.decorated-zone::after {
+  content: "";
   position: absolute;
   inline-size: 25px;
   block-size: 25px;
@@ -298,14 +312,14 @@ h4.section__title {
 }
 
 .decorated-zone::before {
-  inset-block-start: 0;
-  inset-inline-end: 0;
+  inset-block-start: 20px;
+  inset-inline-end: 20px;
   border-width: 1px 1px 0 0;
 }
 
 .decorated-zone::after {
-  inset-block-end: 0;
-  inset-inline-start: 0;
+  inset-block-end: 20px;
+  inset-inline-start: 20px;
   border-width: 0 0 1px 1px;
 }
 
@@ -314,134 +328,146 @@ h4.section__title {
 /****************** M-SIZE STYLES start ******************/
 
 @media (max-width: 768px) {
+  .header,
+  .footer {
+    min-block-size: 1024px;
+  }
 
-.header__theme-menu {
-  justify-self: end;
-  margin-block-start: 171px;
-}
+  .header {
+    grid-template-rows: 270px auto 280px;
+  }
+  .header__theme-menu {
+    justify-self: end;
+    align-self: end;
+  }
 
-.header__theme-menu-list {
-  flex-direction: column;
-  gap: 9px;
-  align-items: end;
-}
+  .header__theme-menu-list {
+    flex-direction: column;
+    gap: 9px;
+    align-items: end;
+  }
 
-.header__theme-menu-button_type_auto {
-  margin-inline: 0;
-}
+  .header__theme-menu-button_type_auto {
+    margin-inline: 0;
+  }
 
-.header__theme-menu-button {
-  padding-inline: 12px;
-}
+  .header__theme-menu-button {
+    padding-inline: 12px;
+  }
 
-.header__title {
-  margin-block-start: 175px;
-  margin-block-end: 161px;
-}
+  .header__title {
+    align-self: center;
+  }
 
-.header__intro {
-  margin-block-end: 163px;
-}
+  .header__intro {
+    align-self: start;
+  }
 
-.section-column {
-  gap: 20px;
-}
+  .section-column__article {
+    gap: 20px;
+  }
 
-.section-row {
-  display: block;
-}
+  .section-row__article {
+    display: block;
+  }
 
-.section-row h2.section__title {
-  inline-size: calc(100% / 5);
-}
+  .section-row h2.section__title {
+    inline-size: calc(100% / 5);
+  }
 
-.section-row .section__article {
-  margin-block-start: 20px;
-}
+  .section__article-title_row {
+    inline-size: calc(100% / 4);
+  }
 
-.footer__title {
-  padding-block: 415px;
-}
-
+  .section-row__article-block {
+    margin-block-start: 20px;
+  }
 }
 
 /****************** M-SIZE STYLES end ******************/
 
 /****************** S-SIZE STYLES start ******************/
 
+/**
+  Горизонтальный скролл иногда появляется при открытии инструментов разработчика в адаптивном режиме. Ctrl + F6 убирает его.
+  Работаю в Хроме. Так и не понял в чём дело.
+
+  Был ещё стабильный скролл при размере 380px, но я его починил.
+*/
+
 @media (max-width: 375px) {
+  .header,
+  .footer {
+    min-block-size: 668px;
+    padding: 10px;
 
-.header {
-  padding: 10px;
-}
+    --font-size-title: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  }
 
-.header__theme-menu {
-  margin-block-start: 65px;
-}
+  .header {
+    grid-template-rows: 165px auto 170px;
+  }
 
-.header__theme-menu-list {
-  gap: 9px;
-}
+  .header__theme-menu {
+    inset-block-start: 0px;
+  }
 
-.header__title {
-  padding-inline: 15px;
-  margin-block-start: 63px;
-  margin-block-end: 51px;
-}
+  .header__title {
+    padding-inline: 15px;
+    line-height: 82.5%;
+  }
 
-.header__intro {
-  grid-column: 1 / -1;
-  margin-block-end: 56px;
-}
+  .header__intro {
+    grid-column: 1 / -1;
+  }
 
-.header + .section {
-  padding-block-start: 40px;
-}
+  .section {
+    padding: 26px 10px;
+  }
 
-.section {
-  padding: 26px 10px;
-}
+  .section:first-child {
+    padding-block-start: 40px;
+  }
 
-.section:first-child {
-  padding-block-start: 40px;
-}
+  .section:last-child {
+    padding-block-end: 40px;
+  }
 
-.section-column {
-  display: block;
-}
+  .section-column__article {
+    display: block;
+  }
 
-.section-row h2.section__title {
-  inline-size: auto;
-}
+  .section__article-title {
+    margin-block-end: 20px;
+  }
 
-.section__article {
-  margin-block-start: 20px;
-}
+  .section__article-title_row {
+    inline-size: auto;
+  }
 
-.cards__holder {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+  .cards__holder {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 
-.cards h2.section__title {
-  margin-block-end: 10px;
-}
+  .cards__title {
+    margin-block-end: 10px;
+  }
 
-.cards {
-  padding-block-start: 22px;
-}
+  .cards {
+    padding-block-start: 22px;
+  }
 
-.footer {
-  padding: 10px;
-  padding-block-start: 25px;
-}
+  .decorated-zone::before {
+    inset-block-start: 10px;
+    inset-inline-end: 10px;
+  }
 
-.footer__title {
-  padding-block-start: 250px;
-  padding-block-end: 242px;
-}
-
+  .decorated-zone::after {
+    inset-block-end: 10px;
+    inset-inline-start: 10px;
+  }
 }
 
 /****************** S-SIZE STYLES end ******************/

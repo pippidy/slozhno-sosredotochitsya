@@ -1,8 +1,4 @@
-:root {
-  --font-family-main: IBM Plex Mono, monospace;
-  --font-size-main: 18px;
-  --font-size-title: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
-
+.page.theme_dark {
   --clr-accent: #ff0070;
   --clr-accent-dark: #000028;
   --clr-title-main: #db00ff;
@@ -11,4 +7,8 @@
   --clr-decor: var(--clr-accent);
 
   --bg-main: url(../images/cover-image-dark.png);
+}
+
+.page.theme_dark .header__theme-menu-button:hover {
+  outline: 1px solid rgba(255, 0, 112, 0.4);
 }

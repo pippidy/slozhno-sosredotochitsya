@@ -1,19 +1,31 @@
 .page.theme_light {
   --clr-accent: #ff8dcb;
   --clr-accent-dark: #353430;
-  --clr-title-main: #FFC2E6;
+  --clr-title-main: #ffc2e6;
   --clr-title-section: var(--clr-accent-dark);
   --clr-article: var(--clr-accent-dark);
   --clr-decor: var(--clr-accent-dark);
 
-  --bg-main: #fff1f7;
-  --bg-header: url(../images/cover-image-light.png);
+  --bg-main: url(../images/cover-image-light.png);
 }
 
 .page.theme_light .header__rec {
   display: none;
 }
 
-.header__theme-menu-button:hover {
-  outline: 1px solid #35343040;
+.page.theme_light .header__theme-menu-button:hover {
+  outline: 1px solid rgba(50, 49, 45, 0.4);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --clr-accent: #ff8dcb;
+    --clr-accent-dark: #353430;
+    --clr-title-main: #ffc2e6;
+    --clr-title-section: var(--clr-accent-dark);
+    --clr-article: var(--clr-accent-dark);
+    --clr-decor: var(--clr-accent-dark);
+
+    --bg-main: url(../images/cover-image-light.png);
+  }
 }

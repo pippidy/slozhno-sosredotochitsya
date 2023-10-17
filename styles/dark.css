@@ -9,6 +9,10 @@
   --bg-main: url(../images/cover-image-dark.png);
 }
 
+.page.theme_dark .header__rec {
+  display: block;
+}
+
 .page.theme_dark .header__theme-menu-button:hover {
   outline: 1px solid rgba(255, 0, 112, 0.4);
 }

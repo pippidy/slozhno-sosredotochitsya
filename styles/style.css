@@ -40,7 +40,6 @@
   flex: 1;
   grid-template-columns: 1fr 1fr max-content;
   grid-template-rows: 1fr min-content 1fr;
-  padding-inline-start: 0;
 }
 
 .header__rec {
@@ -107,6 +106,7 @@
 .header__title {
   grid-column: 1 / -1;
   align-self: end;
+  margin-inline-start: -10px;
   text-shadow: 4px 4px 0 var(--clr-accent);
 }
 
@@ -363,6 +363,10 @@
 
   .header__intro {
     grid-column: 1 / -1;
+  }
+
+  .header__title {
+    margin-inline-start: 0;
   }
 
   .section {

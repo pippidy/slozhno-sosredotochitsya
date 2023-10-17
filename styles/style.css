@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   min-block-size: 100vh;
-  inline-size: 100vw;
+  inline-size: 100%;
   max-inline-size: 1024px;
   min-inline-size: 375px;
   margin: 0 auto;
@@ -15,7 +15,7 @@
 .header,
 .footer {
   display: grid;
-  min-block-size: 768px;
+  min-block-size: 100vh;
   padding: 20px;
 }
 
@@ -25,6 +25,7 @@
   font-size: var(--font-size-title);
   font-weight: 700;
   text-transform: lowercase;
+  line-height: 82.5%;
 }
 
 .title-decor {
@@ -38,11 +39,8 @@
 .header {
   flex: 1;
   grid-template-columns: 1fr 1fr max-content;
-  grid-template-rows: min-content 400px auto;
-}
-
-.header__title {
-  text-shadow: 4px 4px 0 var(--clr-accent);
+  grid-template-rows: 1fr min-content 1fr;
+  padding-inline-start: 0;
 }
 
 .header__rec {
@@ -90,6 +88,10 @@
   border: 1px solid transparent;
 }
 
+.header__theme-menu-button:hover {
+  outline: 1px solid rgba(255, 0, 112, 0.4);
+}
+
 .header__theme-menu-button:focus {
   outline: 0;
 }
@@ -105,9 +107,7 @@
 .header__title {
   grid-column: 1 / -1;
   align-self: end;
-  position: relative;
-  inset-inline-start: -20px;
-  line-height: 82.5%;
+  text-shadow: 4px 4px 0 var(--clr-accent);
 }
 
 .header__theme-menu-button_active {
@@ -138,71 +138,58 @@
   padding-block-end: 60px;
 }
 
-.header + .section {
-  padding-block-start: 60px;
-}
-
-.section p {
+.text-card__text {
   color: var(--clr-article);
   font-weight: 400;
   line-height: 130%;
 }
 
-.section__article-title {
-  color: var(--clr-title-section);
-}
-
-.section__aricle-block-title + .section__article-separator {
-  margin-block-start: 20px;
-}
-
-.section__aricle-block-title {
-  margin-block-end: 10px;
-}
-
-.section__article-separator {
-  margin-block-end: 11px;
-}
-
-.section__article-separator {
-  font-weight: 400;
-}
-
-.section-column p {
-  margin-block: 10px 20px;
-}
-
-.section-column__article {
+.section-column {
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 20px 10px;
 }
 
-.section-column__article p:last-child {
-  margin-block-end: 0;
+.text-card {
+  display: flex;
+  gap: 20px;
 }
 
-.section__article-title_column {
-  grid-row: 1 / -1;
-}
-
-.section-column__article-block {
+.section-column_text-card {
+  flex-direction: column;
   grid-column: 2 / -1;
 }
 
-.section-row p {
-  margin-block: 10px 0;
+.section-row__text-card {
+  grid-column: 1 / -1;
 }
 
 .section-row__article {
+  flex: 1;
+}
+
+.section-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 
-.section__article-title_row {
+.section-row__title {
   grid-column: 1 / -1;
   inline-size: calc(100% / 3);
+}
+
+.section__title {
+  color: var(--clr-title-section);
+}
+
+.text-card__title {
+  margin-block-end: 10px;
+}
+
+.section__article-sub {
+  margin-block: 20px 10px;
+  font-weight: 400;
 }
 
 .section__link {
@@ -272,12 +259,6 @@
   grid-row: 3 / 4;
 }
 
-.cards h2.section__title {
-  color: var(--clr-accent-dark);
-  background: var(--clr-accent);
-  margin-block-end: 20px;
-}
-
 /****************** CARDS end ******************/
 
 /****************** FOOTER start ******************/
@@ -288,8 +269,7 @@
 }
 
 .footer__title {
-  align-self: center;
-  text-align: center;
+  place-self: center;
   text-shadow: 2px 2px 0 var(--clr-accent);
 }
 
@@ -328,17 +308,8 @@
 /****************** M-SIZE STYLES start ******************/
 
 @media (max-width: 768px) {
-  .header,
-  .footer {
-    min-block-size: 1024px;
-  }
-
-  .header {
-    grid-template-rows: 270px auto 280px;
-  }
   .header__theme-menu {
-    justify-self: end;
-    align-self: end;
+    align-self: center;
   }
 
   .header__theme-menu-list {
@@ -360,27 +331,23 @@
   }
 
   .header__intro {
-    align-self: start;
+    align-self: center;
+  }
+
+  .section-column {
+    column-gap: 20px;
   }
 
   .section-column__article {
     gap: 20px;
   }
 
-  .section-row__article {
-    display: block;
-  }
-
-  .section-row h2.section__title {
-    inline-size: calc(100% / 5);
-  }
-
-  .section__article-title_row {
+  .section-row__title {
     inline-size: calc(100% / 4);
   }
 
-  .section-row__article-block {
-    margin-block-start: 20px;
+  .section-row__text-card {
+    flex-direction: column;
   }
 }
 
@@ -388,33 +355,10 @@
 
 /****************** S-SIZE STYLES start ******************/
 
-/**
-  Горизонтальный скролл иногда появляется при открытии инструментов разработчика в адаптивном режиме. Ctrl + F6 убирает его.
-  Работаю в Хроме. Так и не понял в чём дело.
-
-  Был ещё стабильный скролл при размере 380px, но я его починил.
-*/
-
-@media (max-width: 375px) {
+@media (max-width: 576px) {
   .header,
   .footer {
-    min-block-size: 668px;
     padding: 10px;
-
-    --font-size-title: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
-  }
-
-  .header {
-    grid-template-rows: 165px auto 170px;
-  }
-
-  .header__theme-menu {
-    inset-block-start: 0px;
-  }
-
-  .header__title {
-    padding-inline: 15px;
-    line-height: 82.5%;
   }
 
   .header__intro {
@@ -433,15 +377,12 @@
     padding-block-end: 40px;
   }
 
-  .section-column__article {
-    display: block;
+  .section-column {
+    display: flex;
+    flex-direction: column;
   }
 
-  .section__article-title {
-    margin-block-end: 20px;
-  }
-
-  .section__article-title_row {
+  .section-row__title {
     inline-size: auto;
   }
 

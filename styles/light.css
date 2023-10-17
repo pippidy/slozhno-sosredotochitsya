@@ -28,4 +28,12 @@
 
     --bg-main: url(../images/cover-image-light.png);
   }
+
+  .header__rec {
+    display: none;
+  }
+
+  .header__theme-menu-button:hover {
+    outline: 1px solid rgba(50, 49, 45, 0.4);
+  }
 }

@@ -6,8 +6,8 @@
 
 body {
   margin: 0;
-  font-family: var(--font-family-main);
-  font-size: var(--font-size-main);
+  font-family: var(--font-family-main, "'Courier New', monospace");
+  font-size: var(--font-size-main, 18px);
 }
 
 h1,
@@ -18,7 +18,7 @@ h5,
 h6,
 p {
   margin: 0;
-  font-size: var(--font-size-main, "'Courier New', monospace");
+  font-size: var(--font-size-main, 18px);
 }
 
 ul {
